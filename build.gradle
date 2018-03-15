@@ -8,13 +8,13 @@ targetCompatibility = 1.8
 
 dependencies {
     testCompile "junit:junit:4.12"
-    compile 'com.github.cancerberosgx:java-utils:v0.0.1'
-    compile 'com.github.cancerberosgx:java-swing:v0.0.1'
+    compile 'com.github.cancerberosgx:java-utils:v0.0.2'
+    compile 'com.github.cancerberosgx:java-swing:v0.0.2'
 }
 
 jar {
     baseName = 'PictureMakeup'
-    version =  '0.0.1'
+    version =  '0.0.2'
 
 	manifest {
 		attributes(
