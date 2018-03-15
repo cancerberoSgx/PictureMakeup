@@ -1,0 +1,35 @@
+apply plugin: 'java'
+repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    testCompile "junit:junit:4.12"
+    compile 'com.github.cancerberosgx:java-utils:v0.0.1'
+    compile 'com.github.cancerberosgx:java-swing:v0.0.1'
+}
+
+jar {
+    baseName = 'PictureMakeup'
+    version =  '0.0.1'
+
+	manifest {
+		attributes(
+      		'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+    		'Main-Class': 'org.sgx.picturemakeup.Main'
+    	)
+  	}
+  	// the following will put all dependencies jar into this one
+  	from {
+	    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	}
+}
+
+sourceSets.main.java.srcDirs += 'src'
+
+// the following is for adding all images (the default one) as resources in the jar
+sourceSets.main.resources.srcDirs += 'src'
+sourceSets.main.resources.includes = [ "**/*.jpg" ]
